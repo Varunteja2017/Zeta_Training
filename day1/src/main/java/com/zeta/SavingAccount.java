@@ -8,11 +8,19 @@ public class SavingAccount extends Account{
 
     @Override
     public float deposit(float amount) {
-        return 0;
+        float currentBalance = getBalance();
+        setBalance(currentBalance + amount);
+        return getBalance();
     }
 
     @Override
     public float withdraw(float amount) {
-        return 0;
+        float currentBalance = getBalance();
+        validateAmount(amount);
+        if(currentBalance < amount){
+            throw new IllegalArgumentException("Insufficient Balance");
+        }
+        setBalance(currentBalance - amount);
+        return getBalance();
     }
 }

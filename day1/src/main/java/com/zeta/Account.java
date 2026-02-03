@@ -16,7 +16,11 @@ public abstract class Account {
     public ACCOUNT_TYPE getType() {
         return type;
     }
-
+    public void validateAmount(float amount){
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+    }
     public void setType(ACCOUNT_TYPE type) {
         this.type = type;
     }
